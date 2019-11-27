@@ -1,5 +1,5 @@
 num1 = '123'
-num2 = '25'
+num2 = '3'
 
 lastanswer = ''
 sign=0
@@ -43,6 +43,6 @@ for i in range(1,arrayLength):
     summation +=int(answerList[i])
 if sign == 1 :
     summation*=-1
-print(num1+' * '+num2 +' = '+ summation)
+print(str(num1)+' * '+str(num2) +' = '+ str(summation))
 
 
