@@ -2,7 +2,7 @@ number = input()
 argument = [number]
 for i in range(0,number):
     a = input()
-    argument[i]=a;
+    argument[i]=a
 
 for j in range(0, number):
     check(argument[j])
