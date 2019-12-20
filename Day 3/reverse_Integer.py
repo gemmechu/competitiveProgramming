@@ -1,20 +1,13 @@
 class Solution:
-    def reverse(self, x: int) -> int:
-        sign = 0
-        if str(x).startswith('-'):
-            x *= -1
-            sign = 1
-        temp = ''
-        while x // 10 != 0:
-
-            temp += str(x % 10)
-            x = x // 10
-            if x // 10 == 0:
-                temp += str(x % 10)
-        if temp.startswith('0'):
-            temp = temp[1:]
-        if (sign == 1):
-            temp = '-' + temp
-        return temp
-solution = Solution()
-print(solution.reverse(320))
+    def reverse(self, x: int) -> int:  
+        if x > 0:  # handle positive numbers  
+            a =  int(str(x)[::-1])  
+        if x <=0:  # handle negative numbers  
+            a = -1 * int(str(x*-1)[::-1])  
+        # handle 32 bit overflow  
+        mina = -2**31  
+        maxa = 2**31 - 1  
+        if a not in range(mina, maxa):  
+            return 0  
+        else:  
+            return a

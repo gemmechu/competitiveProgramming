@@ -13,8 +13,29 @@ def snowWalk(sample):
             howmany['U'] = howmany['D']
         else:
             howmany['D'] = howmany['U']
-    distance = (howmany['D']+howmany['R'])*2
-    print(distance)
+        
+    if(howmany['L'] and howmany['D'] !=0 ):
+        distance = (howmany['D']+howmany['R'])*2
+        print(distance)
+        res = "L" * howmany['L'] + "U" * howmany['U'] + "R" * howmany['R'] + "D" * howmany['D']
+        print(res)  
+    elif(howmany['L'] ==0):
+        if(howmany['U'] !=0):
+            print(2)
+            print("UD")
+        else:
+            print(0)
+    elif(howmany['U'] ==0):
+        if(howmany['L'] !=0):
+            print(2)
+            print("LR")
+        else:
+            print(0)
+    
+    else:
+        print(0)
+
+
             
 number = eval(input())
 
