@@ -24,7 +24,8 @@ class Solution:
                 count=curent_count
         
         return count
-a=Solution()
+class classname(object):
+    pass
 s="krpgjbjjznpzdfy"
 t="nxargkbydxmsgby"
 maxCost =14
