@@ -1,0 +1,2 @@
+number = input()
+argument = [number]
