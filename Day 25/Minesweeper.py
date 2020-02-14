@@ -11,31 +11,33 @@ class Solution:
 
         def isInBorder(x, y):
             return (0 <= x < len(board) and 0 <= y < len(board[0]))
-
-        def dfs(i,j):
-            if(board[i][j]=='M'):
-                board[i][j] ='X'
+        def dfs(board: List[List[str]], click: List[int]) -> List[List[str]]:
+            i,j=click[0], click[1]
+            if(board[i][j]=='M' and isInBorder(i,j)):
+                board[i][j]='X'
                 return board
+            #check how many M are there
 
+            count = 0
             for x,y in neighbours(i,j):
-
-                if(isInBorder(x,y) and board[x][y] == 'E'):
-                    if(board[x][y]=='M'):
-                        if (board[i][j] == 'E'):
-                            board[i][j] = '1'
-                        elif (board[i][j] != 'M' and board[i][j] != 'B'):
-                            board[i][j] = str(int(board[i][j]) + 1)
-                    else:
-                        if (board[i][j] == 'E'):
-                            board[i][j] = 'B'
-                    dfs(x,y)
+                if(isInBorder(x,y) and board[x][y]=='M'):
+                    count+=1
+            if(count>0):
+                board[i][j]=str(count)
+                return board
+            board[i][j]='B'
+            #continue DFS
+            for x,y in neighbours(i,j):
+                if(isInBorder(x,y) and board[x][y] !='B'):
+                    dfs(board,[x,y])
             return board
-        return dfs(click[0],click[1])
+        return dfs(board,click)
+
 main=Solution()
 board=[['E', 'E', 'E', 'E', 'E'],
-        ['E', 'E', 'M', 'E', 'E'],
-        ['E', 'E', 'E', 'E', 'E'],
-        ['E', 'E', 'E', 'E', 'E']]
-click=[0,2]
+       ['E', 'E', 'M', 'E', 'E'],
+       ['E', 'E', 'E', 'E', 'E'],
+       ['E', 'E', 'E', 'E', 'E']]
+click=[1,2]
 print(main.updateBoard(board,click))
 
