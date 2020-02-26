@@ -1,20 +1,34 @@
-class RecentCounter:
-    
-    def __init__(self):
-        self.queue = []
-        
-
-    def ping(self, t: int) -> int:
-        self.queue.append(t)
-        size=len(self.queue)
-        while (  size>0 and self.queue[size-1] < t-3000):
-            self.queue.pop()
-        return len(self.queue)
-        
-
-
-# Your RecentCounter object will be instantiated and called as such:
-obj = RecentCounter()
-inputs = [[],[1],[100],[3001],[3002]]
-param_1 = obj.ping(inputs)
-print(param_1)
+class MyCircularDeque:
+    def __init__(self, k):
+        self.k = k
+        self.q = []
+    def insertFront(self, value):
+        if len(self.q)< self.k:
+            self.q.insert(0,value)
+            return True
+        return False
+    def insertLast(self, value):
+        if len(self.q) < self.k:
+            self.q.append(value)
+            return True
+        return False
+    def deleteFront(self):
+        if(len(self.q)>0):
+            self.q.pop(0)
+            return True
+        return False
+    def deleteLast(self):
+        if (len(self.q) > 0):
+            self.q.pop()
+            return True
+        return False
+    def getFront(self):
+        if (len(self.q) > 0):
+            return self.q[0]
+        return -1
+    def getRear(self):
+        if (len(self.q) > 0):
+            return self.q[-1]
+        return -1
+    def isFull(self):
+        return len(self.q) == self.k

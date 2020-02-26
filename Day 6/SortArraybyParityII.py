@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def sortArrayByParityII(self, A: List[int]) -> List[int]:
         result = [0] * len(A)
